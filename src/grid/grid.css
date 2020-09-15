@@ -1,0 +1,43 @@
+.Grid {
+	font-family: sans-serif;
+	background-color: gainsboro;
+	display: grid;
+	grid-template-rows: repeat(var(--m), 50px);
+	grid-template-columns: repeat(var(--n), 50px);
+	gap: 3px;
+}
+
+.cell {
+	background-color: oldlace;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 20px;
+	position: relative;
+	cursor: pointer;
+}
+
+.cell:not(.cell-revealed)::after {
+	position: absolute;
+	content: "";
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: grey;
+}
+
+.cell.cell-revealed {
+	cursor: default;
+}
+
+.boom .cell-revealed[data-val="*"] {
+	color: #a00;
+}
+
+.boom .cell[data-val="*"]:not(.cell-revealed) {
+	background: grey;
+}
+.boom .cell[data-val="*"]:not(.cell-revealed)::after {
+	display: none;
+}
